@@ -3,10 +3,14 @@
 ![](https://hlx.blob.core.windows.net/external/21ed6634b9f9168bd8ac702b19594cf444af5e6f)
 _Illustration by Prabhat Mahapatra_
 
-by Will Fanguy
-Posted on 10-20-2020
+Author: Will Fanguy
+
+Date: 10-20-2020
 
 Tags: XD Ideas, Principles, Emerging Technology
+
+
+
 
 Technologies like [virtual reality](https://xd.adobe.com/ideas/principles/emerging-technology/virtual-reality-design/) and [augmented reality](https://xd.adobe.com/ideas/principles/emerging-technology/ux-design-principles-for-augmented-reality/) aren’t just for movies and video games anymore. Companies like Sony, HTC, and Facebook have invested heavily in making these technologies more approachable and user-friendly, and games like Pokémon GO have brought them into our homes and onto our mobile devices.
 
