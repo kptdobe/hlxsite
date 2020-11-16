@@ -1,18 +1,12 @@
 # Designing for the Differences Between AR & VR
 
----
-
 ![](https://hlx.blob.core.windows.net/external/21ed6634b9f9168bd8ac702b19594cf444af5e6f)
-
 _Illustration by Prabhat Mahapatra_
 
----
-
 by Will Fanguy
-
 Posted on 10-20-2020
 
----
+Tags: XD Ideas, Principles, Emerging Technology
 
 Technologies like [virtual reality](https://xd.adobe.com/ideas/principles/emerging-technology/virtual-reality-design/) and [augmented reality](https://xd.adobe.com/ideas/principles/emerging-technology/ux-design-principles-for-augmented-reality/) aren’t just for movies and video games anymore. Companies like Sony, HTC, and Facebook have invested heavily in making these technologies more approachable and user-friendly, and games like Pokémon GO have brought them into our homes and onto our mobile devices.
 
@@ -21,8 +15,6 @@ As designers, it’s important for us to stay up to date on the human-computer i
 ![While AR and VR have some things in common, it’s important to look beyond the hardware when designing. ](https://hlx.blob.core.windows.net/external/3e10b9830743f47b5ba5dd658ec994b5b98c6da3)
 
 _While AR and VR have some things in common, it’s important to look beyond the hardware when designing. Image credit Adobe Stock._
-
-
 
 ## What is virtual reality (VR)?
 
@@ -39,8 +31,6 @@ AR displays have become much more common over the last decade as the cameras and
 ![While both of these technologies can use headsets, VR is more immersive than AR.](https://hlx.blob.core.windows.net/external/8f21e3787d17a399950151accded0e8cbb082e0f)
 
 _While both of these technologies can use headsets, VR is more immersive than AR. Image credit Adobe Stock._
-
-
 
 ## How do VR and AR compare?
 
@@ -74,13 +64,6 @@ Unlike when designing for a VR user experience, [designing for an AR user experi
 
 _Considering your users’ surroundings is a key concept in designing both AR and VR experiences. Image credit Adobe Stock._
 
-
 ## VR, AR, and real life
 
 While both of these technologies are immersive, the differences in the approach far outnumber the similarities. Much like we wouldn’t design for a mobile app in the same way we’d design a desktop website experience, it’s important to make distinctions and decisions that take a user’s goal and their way of progressing towards it in mind. By keeping these considerations in mind, you’ll be able to take advantage of some of the new and exciting ways we’ll be experiencing technology and the world around us (real or virtual) for many years to come.
-
----
-
-Topics: XD Ideas, Principles, Emerging Technology
-
-Products:
