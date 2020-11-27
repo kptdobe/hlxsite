@@ -6,4 +6,4 @@ Combined emphasis with **double asterisks and _single underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
 
-But strikethrough should not use single tildes. Value one is: ~30. Don't scratch this. Value two is: ~40.
+But strikethrough should not use single tildes. Value one is: 20~30. Don't scratch this. Value two is: 30~40.
