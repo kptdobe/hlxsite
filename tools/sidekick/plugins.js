@@ -21,7 +21,7 @@
 
   sk.add({
     id: 'translation',
-    condition: (sk) => sk.isEditor() && (sk.location.search.includes('.docx&') || sk.location.search.includes('doc.aspx?') || sk.location.search.includes('.md&')),
+    // condition: (sk) => sk.isEditor() && (sk.location.search.includes('.docx&') || sk.location.search.includes('doc.aspx?') || sk.location.search.includes('.md&')),
     button: {
       text: 'Send for translation',
       action: async (evt) => {
