@@ -80,6 +80,7 @@
         //   $modal.appendChild(style);
         //   btn.classList.add('pressed');
         // }
+        }
       }
     },
   });
