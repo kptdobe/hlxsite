@@ -28,13 +28,27 @@
         const sk = window.hlx && window.hlx.sidekick ? window.hlx.sidekick : window.hlxSidekick;
         const btn = evt.target;
         let $modal = document.querySelector('.hlx-sk-overlay > div > .translation');
-        // if ($modal) {
-        //   sk.hideModal();
-        //   btn.classList.remove('pressed');
-        // } else {
-        //   sk.showModal('', true);
-        //   $modal = document.querySelector('.hlx-sk-overlay > div');
-        //   $modal.classList.remove('wait');
+        if ($modal) {
+          sk.hideModal();
+          btn.classList.remove('pressed');
+        } else {
+          sk.showModal('', true);
+          $modal = document.querySelector('.hlx-sk-overlay > div');
+          $modal.classList.remove('wait');
+          const langs = await fetch('/language-map.json');
+
+          if (langs && langs.data) {
+            const current = langs.data.find(e => e.page === new URL(window.location.href).pathname);
+            if (current) {
+              for(let h in current) {
+                if (h !== 'page') {
+                  const hrefToLocale = current[h];
+                  const u = new URL(hrefToLocale);
+                  $modal.innerHTML += `<input type="checkbox" value="${h}"><label>${u.pathname}</label><br>`;
+                }
+              }
+            }
+          }
         //   $modal.innerHTML = addCard(await itemTransformer(getCardData()),
         //     document.createDocumentFragment()).outerHTML;
         //   function hideCardPreview() {
