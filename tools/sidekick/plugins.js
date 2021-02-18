@@ -39,7 +39,8 @@
           const json = await res.json();
 
           if (json && json.data) {
-            const current = json.data.find(e => e.page === new URL(window.location.href).pathname);
+            const currentPage = `/${new URL(window.location.href).pathname.match(/\/.*?\/(.*)/)[1]}`;
+            const current = json.data.find(e => e.page === currentPage);
             if (current) {
               for(let h in current) {
                 if (h !== 'page') {
