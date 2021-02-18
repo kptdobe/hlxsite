@@ -43,14 +43,14 @@
             const current = json.data.find(e => e.page === currentPage);
             if (current) {
               for(let h in current) {
-                if (h !== 'page') {
-                  const hrefToLocale = current[h];
-                  const u = new URL(hrefToLocale);
-                  $modal.innerHTML += `<input type="checkbox" value="${h}"><label>${u.pathname}</label><br>`;
+                const localePage = current[h];
+                if (h !== 'page' && localePage === '') {
+                  $modal.innerHTML += `<input type="checkbox" value="${h}"><label>${h}</label><br>`;
                 }
               }
             }
           }
+          $modal.innerHTML += `Click to start translation workflow for selected languages / locales<button>Start</button>`;
         //   $modal.innerHTML = addCard(await itemTransformer(getCardData()),
         //     document.createDocumentFragment()).outerHTML;
         //   function hideCardPreview() {
