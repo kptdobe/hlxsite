@@ -27,63 +27,49 @@
       action: async (evt) => {
         const sk = window.hlx && window.hlx.sidekick ? window.hlx.sidekick : window.hlxSidekick;
         const btn = evt.target;
-        let $modal = document.querySelector('.hlx-sk-overlay > div > .translation');
-        if ($modal) {
-          sk.hideModal();
-          btn.classList.remove('pressed');
-        } else {
-          sk.showModal('', true);
-          $modal = document.querySelector('.hlx-sk-overlay > div');
-          $modal.classList.remove('wait');
-          const res = await fetch('/language-map.json');
-          const json = await res.json();
 
-          if (json && json.data) {
-            const currentPage = `/${new URL(window.location.href).pathname.match(/\/.*?\/(.*)/)[1]}`;
-            const current = json.data.find(e => e.page === currentPage);
-            if (current) {
-              for(let h in current) {
-                const localePage = current[h];
-                if (h !== 'page' && localePage === '') {
-                  $modal.innerHTML += `<input type="checkbox" value="${h}"><label>${h}</label><br>`;
-                }
+        sk.showModal('', true);
+        $modal = document.querySelector('.hlx-sk-overlay > div');
+
+        const res = await fetch('/language-map.json');
+        const json = await res.json();
+
+        const $container = createTag('div', {'class': 'translation'});
+
+        if (json && json.data) {
+          const currentPage = `/${new URL(window.location.href).pathname.match(/\/.*?\/(.*)/)[1]}`;
+          const current = json.data.find(e => e.page === currentPage);
+          if (current) {
+            for(let h in current) {
+              const localePage = current[h];
+              if (h !== 'page' && localePage === '') {
+                $container.innerHTML += `<input type="checkbox" value="${h}"><label>${h}</label><br>`;
               }
             }
           }
-          $modal.innerHTML += `</label>Click to start translation workflow for selected languages / locales</label><button>Start</button>`;
-          $modal.innerHTML += `<button>Start</button>`;
-          $modal.innerHTML += `<button onclick="${() => { sk.hideModal()} }">Close</button>`;
-        //   $modal.innerHTML = addCard(await itemTransformer(getCardData()),
-        //     document.createDocumentFragment()).outerHTML;
-        //   function hideCardPreview() {
-        //     sk.hideModal();
-        //     btn.classList.remove('pressed');
-        //   }
-        //   $modal.parentElement.onclick = (evt) => {
-        //     hideCardPreview();
-        //     evt.target.onclick = null;
-        //   };
-        //   document.body.onkeydown = (evt) => {
-        //     if (evt.key === 'Escape') {
-        //       hideCardPreview();
-        //       evt.target.onkeydown = null;
-        //     }
-        //   };
-        
-          const style = document.createElement('style');
-          style.textContent = `
-          .hlx-sk-overlay .card {
-            width: 376px;
-            box-shadow: var(--hlx-sk-shadow);
-          }
-          .hlx-sk-overlay > div {
-            text-align: center;
-            background-color: transparent;
-            box-shadow: none;
-          }`;
-          $modal.appendChild(style);
-          // btn.classList.add('pressed');
         }
+        $container.innerHTML += `</label>Click to start translation workflow for selected languages / locales</label>`;
+        $container.innerHTML += `<button>Start</button>`;
+        $container.innerHTML += `<button onclick="${() => { sk.hideModal()} }">Close</button>`;
+
+        $modal.appendChild($container);
+
+        $modal.parentElement.onclick = (evt) => {
+          evt.target.onclick = null;
+        };
+      
+        const style = document.createElement('style');
+        style.textContent = `
+        .hlx-sk-overlay .translation {
+          width: 376px;
+          box-shadow: var(--hlx-sk-shadow);
+        }
+        .hlx-sk-overlay > div {
+          text-align: center;
+          background-color: transparent;
+          box-shadow: none;
+        }`;
+        $modal.appendChild(style);
       }
     },
   });
