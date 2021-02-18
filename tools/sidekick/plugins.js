@@ -50,7 +50,9 @@
               }
             }
           }
-          $modal.innerHTML += `Click to start translation workflow for selected languages / locales<button>Start</button>`;
+          $modal.innerHTML += `</label>Click to start translation workflow for selected languages / locales</label><button>Start</button>`;
+          $modal.innerHTML += `<button>Start</button>`;
+          $modal.innerHTML += `<button onclick="${() => { sk.hideModal()} }">Close</button>`;
         //   $modal.innerHTML = addCard(await itemTransformer(getCardData()),
         //     document.createDocumentFragment()).outerHTML;
         //   function hideCardPreview() {
@@ -68,20 +70,19 @@
         //     }
         //   };
         
-        //   const style = document.createElement('style');
-        //   style.textContent = `
-        //   .hlx-sk-overlay .card {
-        //     width: 376px;
-        //     box-shadow: var(--hlx-sk-shadow);
-        //   }
-        //   .hlx-sk-overlay > div {
-        //     text-align: center;
-        //     background-color: transparent;
-        //     box-shadow: none;
-        //   }`;
-        //   $modal.appendChild(style);
-        //   btn.classList.add('pressed');
-        // }
+          const style = document.createElement('style');
+          style.textContent = `
+          .hlx-sk-overlay .card {
+            width: 376px;
+            box-shadow: var(--hlx-sk-shadow);
+          }
+          .hlx-sk-overlay > div {
+            text-align: center;
+            background-color: transparent;
+            box-shadow: none;
+          }`;
+          $modal.appendChild(style);
+          // btn.classList.add('pressed');
         }
       }
     },
