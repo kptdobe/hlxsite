@@ -35,10 +35,11 @@
           sk.showModal('', true);
           $modal = document.querySelector('.hlx-sk-overlay > div');
           $modal.classList.remove('wait');
-          const langs = await fetch('/language-map.json');
+          const res = await fetch('/language-map.json');
+          const json = await res.json();
 
-          if (langs && langs.data) {
-            const current = langs.data.find(e => e.page === new URL(window.location.href).pathname);
+          if (json && json.data) {
+            const current = json.data.find(e => e.page === new URL(window.location.href).pathname);
             if (current) {
               for(let h in current) {
                 if (h !== 'page') {
