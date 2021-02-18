@@ -30,6 +30,7 @@
 
         sk.showModal('', true);
         $modal = document.querySelector('.hlx-sk-overlay > div');
+        $modal.classList.remove('wait');
 
         const res = await fetch('/language-map.json');
         const json = await res.json();
@@ -56,6 +57,10 @@
 
         $modal.parentElement.onclick = (evt) => {
           evt.target.onclick = null;
+        };
+
+        $modal.onclick = (evt) => {
+          evt.stopPropagation();
         };
       
         const style = document.createElement('style');
