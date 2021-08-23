@@ -10,6 +10,25 @@
  * governing permissions and limitations under the License.
  */
 
+import Context from "./context.js";
+
+/**
+ * Loads a CSS file.
+ * @param {string} href The path to the CSS file
+ */
+ export function loadCSS(href) {
+  if (!document.querySelector(`head > link[href="${href}"]`)) {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', href);
+    link.onload = () => {
+    };
+    link.onerror = () => {
+    };
+    document.head.appendChild(link);
+  }
+}
+
 /* eslint-disable no-undef */
 function createTag(name, attrs) {
   const el = document.createElement(name);
@@ -35,18 +54,28 @@ function wrap(selector, className) {
 }
 
 /**
- * Turn leading image into a title section.
+ * Wraps each section in an additional {@code div}.
+ * @param {[Element]} $sections The sections
  */
+ function wrapSections($sections) {
+  $sections.forEach(($div) => {
+    if (!$div.id) {
+      const $wrapper = document.createElement('div');
+      $wrapper.className = 'section-wrapper';
+      $div.parentNode.appendChild($wrapper);
+      $wrapper.appendChild($div);
+    }
+  });
+}
 
-function createHeroSection() {
-  const $headerImg = document.querySelector('main>div:first-of-type>div>:first-child>img');
-  if ($headerImg) {
-    const src = $headerImg.getAttribute('src');
-    const $wrapper = $headerImg.closest('.section-wrapper');
-    $wrapper.style.backgroundImage = `url(${src})`;
-    $wrapper.classList.add('hero');
-    $headerImg.parentNode.remove();
-  }
+/**
+ * Decorates all blocks in a container element.
+ * @param {Element} $main The container element
+ */
+ function decorateBlocks($main) {
+  $main
+    .querySelectorAll('div.section-wrapper > div > div')
+    .forEach(($block) => decorateBlock($block));
 }
 
 /*
@@ -108,9 +137,6 @@ async function loadBlocks($main) {
 }
 
 export function decorateMain($main) {
-  // forward compatible pictures redecoration
-  decoratePictures($main);
-  buildAutoBlocks($main);
   wrapSections($main.querySelectorAll(':scope > div'));
   decorateBlocks($main);
 }
@@ -120,6 +146,30 @@ async function decoratePage(win = window) {
   const $main = doc.querySelector('main');
   if ($main) {
     decorateMain($main);
+
+   
+
+    Context.registerEngine(new function() {
+      this.getIteration = () => {
+        return parseInt(localStorage.getItem('dummy_engine_iteration') || 0);
+      };
+
+      return {
+
+        init: () => {
+          localStorage.setItem('dummy_engine_iteration', 1 - this.getIteration()%2); // toggle iteration;
+        },
+
+        resolve: (id) => {
+          const forcedId = localStorage.getItem('dummy_engine_force');
+          if (forcedId) {
+            return forcedId === id;
+          }
+          return parseInt(id)%2 === this.getIteration();
+        }
+      }
+    }());
+
     return loadBlocks($main);
   }
 }
