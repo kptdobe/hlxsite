@@ -1,0 +1,7 @@
+.hlx/
+.cache/
+.DS_Store
+node_modules/
+pipeline.log
+logs
+.env
