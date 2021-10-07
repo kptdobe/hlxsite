@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Helix - Markdown to Word</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <header>
+    <h1>Markdown to Word</h1>
+  </header>
+  <main>
+    <div>Paste your project URL or path here: <input id="url" type="text" value="/en/publish/09/22/tips-every-freelancer-should-consider-for-vetting-clients"><button id="load">Load</button><button id="view">View</button></div>
+    <div class="hidden">
+      <textarea id="md" placeholder="Enter your Markdown here"></textarea>
+      <button id="save">Override in Sharepoint</button>
+    </div>
+    <div id="loading" class="hlx-sk-overlay hidden">
+      <div id="status" class="modal level-4 wait">Application is loading...</div>
+    </div>
+  </main>
+  <script type="module">
+    import { init } from './ui.js';
+
+    init();
+  </script>
+</body>
+</html>

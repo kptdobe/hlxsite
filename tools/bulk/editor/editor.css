@@ -1,0 +1,10 @@
+@import url(../styles.css);
+
+#url {
+  width: 500px;
+}
+
+#md {
+  width: 1200px;
+  height: 600px;
+}
