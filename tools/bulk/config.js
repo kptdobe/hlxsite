@@ -40,7 +40,7 @@ async function getConfig() {
         },
       },
       login: {
-        redirectUri: `/tools/bulk/spauth`,
+        redirectUri: `/tools/bulk/spauth.html`,
       },
       api: {
         url: graphURL,
