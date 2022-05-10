@@ -608,6 +608,7 @@ function onResultFound(result) {
     updateStatus();
 }
 async function doSearch() {
+    SEARCH_BUTTON.setAttribute('disabled', 'true');
     totalSize = 0;
     totalFiles = 0;
     totalSearched = 0;
@@ -624,10 +625,11 @@ async function doSearch() {
     if (pattern.includes(' -c ')) [pattern, connections] = pattern.split(' -c ');
     const filteredURLs = sitemapURLs.filter((url)=>{
         const u = new URL(url);
-        return u.pathname.startsWith(`${rp}${searchIn}`);
+        return u.pathname.startsWith(searchIn);
     });
     totalFiles = filteredURLs.length;
     await _searchJs.search(filteredURLs, config.fields.searchHost, pattern, +connections, onResultFound);
+    SEARCH_BUTTON.removeAttribute('disabled');
 }
 const attachListeners = ()=>{
     _fieldsJs.attachOptionFieldsListeners(config.fields, PARENT_SELECTOR);
@@ -828,18 +830,19 @@ async function fgrep(url, host, pattern) {
 }
 async function fgrepNextFile(host, queue, pattern, onResultFound) {
     const url = queue.shift();
-    if (url) fgrep(url, host, pattern).then((result)=>{
+    if (url) {
+        const result = await fgrep(url, host, pattern);
         if (onResultFound) onResultFound(result);
-        // displayResult(result);
-        if (queue[0]) fgrepNextFile(host, queue, pattern, onResultFound);
-    // updateStatus();
-    });
+        if (queue[0]) return fgrepNextFile(host, queue, pattern, onResultFound);
+    }
 }
 async function fgrepFiles(sitemap, host, pattern, connections, onResultFound) {
     const queue = [
         ...sitemap
     ];
-    for(let c = 0; c < connections; c += 1)fgrepNextFile(host, queue, pattern, onResultFound);
+    const promises = [];
+    for(let c = 0; c < connections; c += 1)promises.push(fgrepNextFile(host, queue, pattern, onResultFound));
+    await Promise.all(promises);
 }
 async function search(sitemap, host, pattern, connections, onResultFound) {
     return fgrepFiles(sitemap, host, pattern, connections, onResultFound);
