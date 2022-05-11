@@ -1,1 +1,69 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Helix Bulk</title><link rel="stylesheet" href="index.a90ed7d1.css"><link rel="stylesheet" href="index.fcd526a7.css"><link rel="stylesheet" href="index.2adb7e89.css"><script src="index.30c683da.js" type="module"></script><script src="index.10fae857.js" type="module"></script><script src="index.0756a1ff.js" type="module"></script></head><body> <sp-theme color="dark" scale="medium"> <h1>Helix Bulk with Spectrum WebComponents</h1> <sp-tabs selected size="m"> <sp-tab label="Search" value="1"></sp-tab> <sp-tab label="Preview / Publish" value="2"></sp-tab> <sp-tab-panel value="1"> <div class="search"> <div class="form"> <div> <sp-field-label for="searchHost" size="m" required>Host</sp-field-label> <sp-textfield placeholder="https://ref--repo--owner.hlx.live" id="searchHost" style="width:400px" class="optionField"></sp-textfield> <sp-field-label for="searchFor" size="m" required>Search for</sp-field-label> <sp-textfield placeholder="Keyword(s) to search for" id="searchFor" style="width:400px" class="optionField"></sp-textfield> </div> <div> <sp-field-label for="searchRootPath" size="m">Root path</sp-field-label> <sp-textfield value="/" id="searchRootPath" style="width:400px" class="optionField"></sp-textfield> <sp-field-label for="searchIn" size="m">Search in</sp-field-label> <sp-textfield placeholder="Sub path to search in (defaults to /)" id="searchIn" style="width:400px" class="optionField"></sp-textfield> </div> <div> <sp-button id="searchButton">Search</sp-button> </div> </div> <div id="searchStatus"></div> <div id="searchResults"></div> </div> </sp-tab-panel> <sp-tab-panel value="2"> <div class="pp"> <div class="form"> <div> <sp-field-label for="ppURLs" size="m" placeholder="List of URLs to preview and / or publish" required>URLs</sp-field-label> <sp-textfield multiline="" id="ppURLs" grows="" style="width:100%" class="optionField"></sp-textfield> </div> <div> <sp-button id="previewButton">Preview</sp-button> <sp-button id="publishButton">Publish</sp-button> <sp-button id="ppButton">Preview & Publish</sp-button> </div> </div> <div id="ppStatus"></div> <div id="ppResults"></div> </div> </sp-tab-panel> </sp-tabs> </sp-theme> </body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Helix Bulk</title>
+  <link rel="stylesheet" href="index.a90ed7d1.css">
+  <link rel="stylesheet" href="index.fcd526a7.css">
+  <link rel="stylesheet" href="index.2adb7e89.css">
+  <script src="index.30c683da.js" type="module"></script>
+  <script src="index.10fae857.js" type="module"></script>
+  <script src="index.0756a1ff.js" type="module"></script>
+</head>
+
+<body>
+  <sp-theme color="dark" scale="medium">
+    <h1>Helix Bulk with Spectrum WebComponents</h1>
+    <sp-tabs selected="1" size="m">
+      <sp-tab label="Search" value="1"></sp-tab>
+      <sp-tab label="Preview / Publish" value="2"></sp-tab>
+      <sp-tab-panel value="1">
+        <div class="search">
+          <div class="form">
+            <div>
+              <sp-field-label for="searchHost" size="m" required>Host</sp-field-label>
+              <sp-textfield placeholder="https://ref--repo--owner.hlx.live" id="searchHost" style="width:400px"
+                class="optionField"></sp-textfield>
+              <sp-field-label for="searchFor" size="m" required>Search for</sp-field-label>
+              <sp-textfield placeholder="Keyword(s) to search for" id="searchFor" style="width:400px"
+                class="optionField"></sp-textfield>
+            </div>
+            <div>
+              <sp-field-label for="searchRootPath" size="m">Root path</sp-field-label>
+              <sp-textfield value="/" id="searchRootPath" style="width:400px" class="optionField"></sp-textfield>
+              <sp-field-label for="searchIn" size="m">Search in</sp-field-label>
+              <sp-textfield placeholder="Sub path to search in (defaults to /)" id="searchIn" style="width:400px"
+                class="optionField"></sp-textfield>
+            </div>
+            <div>
+              <sp-button id="searchButton">Search</sp-button>
+            </div>
+          </div>
+          <div id="searchStatus"></div>
+          <div id="searchResults"></div>
+        </div>
+      </sp-tab-panel>
+      <sp-tab-panel value="2">
+        <div class="pp">
+          <div class="form">
+            <div>
+              <sp-field-label for="ppURLs" size="m" placeholder="List of URLs to preview and / or publish" required>URLs
+              </sp-field-label>
+              <sp-textfield multiline="" id="ppURLs" grows="" style="width:100%" class="optionField"></sp-textfield>
+            </div>
+            <div>
+              <sp-button id="previewButton">Preview</sp-button>
+              <sp-button id="publishButton">Publish</sp-button>
+              <sp-button id="ppButton">Preview & Publish</sp-button>
+            </div>
+          </div>
+          <div id="ppStatus"></div>
+          <div id="ppResults"></div>
+        </div>
+      </sp-tab-panel>
+    </sp-tabs>
+  </sp-theme>
+</body>
+
+</html>
