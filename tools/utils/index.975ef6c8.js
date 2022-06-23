@@ -1441,7 +1441,7 @@ class a extends HTMLElement {
             Promise.reject(t5);
         }
         const t = this.scheduleUpdate();
-        return null != t && await t, !this.isUpdatePending;
+        return null != t && (await t), !this.isUpdatePending;
     }
     scheduleUpdate() {
         return this.performUpdate();
@@ -1459,7 +1459,7 @@ class a extends HTMLElement {
                 return null === (i = t.hostUpdate) || void 0 === i ? void 0 : i.call(t);
             }), this.update(s14)) : this._$EU();
         } catch (t) {
-            throw i2 = !1, this._$EU(), t;
+            throw (i2 = !1, this._$EU(), t);
         }
         i2 && this._$AE(s14);
     }
@@ -3078,7 +3078,7 @@ parcelHelpers.export(exports, "forAwaitOf", ()=>t
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */ const t = async (t1, s1)=>{
-    for await (const i1 of t1)if (!1 === await s1(i1)) return;
+    for await (const i1 of t1)if (!1 === (await s1(i1))) return;
 };
 class s {
     constructor(t2){

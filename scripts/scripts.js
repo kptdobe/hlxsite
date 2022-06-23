@@ -149,7 +149,7 @@ async function decoratePage(win = window) {
 
    
 
-    Context.registerEngine(new function() {
+    Context.registerEngine(new (function() {
       this.getIteration = () => {
         return parseInt(localStorage.getItem('dummy_engine_iteration') || 0);
       };
@@ -168,7 +168,7 @@ async function decoratePage(win = window) {
           return parseInt(id)%2 === this.getIteration();
         }
       }
-    }());
+    })());
 
     return loadBlocks($main);
   }
